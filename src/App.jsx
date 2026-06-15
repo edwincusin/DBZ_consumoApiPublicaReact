@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import PersonajesCard from './components/PersonajeCard.jsx'
+import { FaDragon, FaSearch } from "react-icons/fa";
 
 function App() {
 
@@ -25,15 +26,26 @@ function App() {
   return (
     <div className="app">
       <div className="header">
-        <h1>Personajes de Dragon Ball Z</h1>
-        <input
-          type="text"
-          value={busqueda}
-          className="search-input"
-          placeholder="Buscar por nombre"
-          onChange={(e) => setBusqueda(e.target.value)}
-        />
+
+        <h1>
+          <FaDragon className="dragon-icon" />
+          Personajes de Dragon Ball Z
+        </h1>
+
+        <div className="search-container">
+          <FaSearch className="search-icon" />
+
+          <input
+            type="text"
+            value={busqueda}
+            className="search-input"
+            placeholder="Buscar por nombre"
+            onChange={(e) => setBusqueda(e.target.value)}
+          />
+        </div>
+
       </div>
+
       <div className="grid-container">
         {buscar().map((personaje) => {
           return (

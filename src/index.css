@@ -1,22 +1,64 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
 
+/* =========================
+   FONDO UNIVERSO DRAGON BALL
+========================= */
 body{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(
-    135deg,
-    #0f172a,
-    #1e293b,
-    #111827
-  );
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
   color:white;
   min-height:100vh;
+  overflow-x:hidden;
+
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.9) 2px, transparent 4px),
+    radial-gradient(circle at 85% 25%, rgba(255,255,255,.8) 2px, transparent 4px),
+    radial-gradient(circle at 30% 70%, rgba(255,255,255,.7) 3px, transparent 5px),
+    radial-gradient(circle at 70% 85%, rgba(255,255,255,.7) 2px, transparent 4px),
+    radial-gradient(circle at 45% 10%, rgba(255,255,255,.8) 3px, transparent 5px),
+    radial-gradient(circle at 10% 90%, rgba(255,255,255,.7) 2px, transparent 4px),
+
+    radial-gradient(circle at 25% 40%, rgba(255,255,255,1) 4px, transparent 8px),
+    radial-gradient(circle at 75% 60%, rgba(255,255,255,1) 5px, transparent 10px),
+
+    radial-gradient(circle at 20% 30%, rgba(37,99,235,.22), transparent 30%),
+    radial-gradient(circle at 80% 20%, rgba(168,85,247,.20), transparent 30%),
+    radial-gradient(circle at 50% 80%, rgba(250,204,21,.15), transparent 25%),
+
+    linear-gradient(
+      135deg,
+      #020617 0%,
+      #0f172a 25%,
+      #1e1b4b 50%,
+      #111827 100%
+    );
+
+  background-size:
+    200px 200px,
+    300px 300px,
+    250px 250px,
+    350px 350px,
+    400px 400px,
+    220px 220px,
+    500px 500px,
+    600px 600px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    400% 400%;
+
+  animation: dragonUniverse 20s ease infinite;
 }
 
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
 .app{
   width:95%;
   max-width:1400px;
@@ -24,8 +66,9 @@ body{
   padding:30px 15px;
 }
 
-/* HEADER */
-
+/* =========================
+   HEADER
+========================= */
 .header{
   text-align:center;
   margin-bottom:40px;
@@ -35,90 +78,168 @@ body{
   font-size:clamp(2rem,5vw,4rem);
   margin-bottom:20px;
   color:#facc15;
-  text-shadow:0 0 20px rgba(250,204,21,.5);
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+
+  text-shadow:
+    0 0 10px #facc15,
+    0 0 20px #facc15,
+    0 0 40px rgba(250,204,21,.5);
+}
+
+/* =========================
+   ICONO DRAGON
+========================= */
+.dragon-icon{
+  color:#facc15;
+
+  filter:
+    drop-shadow(0 0 10px #facc15)
+    drop-shadow(0 0 20px #facc15);
+
+  animation: dragonGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes dragonGlow{
+  from{
+    transform:scale(1);
+  }
+  to{
+    transform:scale(1.15);
+  }
+}
+
+/* =========================
+   BUSCADOR
+========================= */
+.search-container{
+  position:relative;
+  width:min(500px,90%);
+  margin:auto;
+}
+
+.search-icon{
+  position:absolute;
+  left:18px;
+  top:50%;
+  transform:translateY(-50%);
+  color:#64748b;
+  font-size:1rem;
 }
 
 .search-input{
-  width:min(500px,90%);
-  padding:15px;
+  width:100%;
+  padding:15px 15px 15px 50px;
+
   border:none;
   border-radius:12px;
+
   font-size:1rem;
+  text-align:center;
   outline:none;
-  text-align: center;
+
+  background:rgba(255,255,255,.95);
+
+  transition:.3s;
+}
+
+.search-input:focus{
+  box-shadow:
+    0 0 10px rgba(250,204,21,.5),
+    0 0 25px rgba(250,204,21,.3);
 }
 
 .search-input::placeholder{
   color:#64748b;
 }
 
-/* GRID RESPONSIVE */
-/* REQUISITO DEL PROFESOR */
-
+/* =========================
+   GRID RESPONSIVE
+========================= */
 .grid-container{
   display:grid;
-  grid-template-columns:repeat(
-    auto-fill,
-    minmax(280px,1fr)
-  );
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
   gap:25px;
 }
 
-/* CARD */
-
+/* =========================
+   CARD
+========================= */
 .card{
   background:rgba(255,255,255,.05);
   backdrop-filter:blur(10px);
+
   border-radius:20px;
   overflow:hidden;
-  transition:.4s;
+
   border:1px solid rgba(255,255,255,.1);
+
   position:relative;
+
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+
+  box-shadow:
+    0 0 15px rgba(250,204,21,.08);
 }
 
 .card:hover{
   transform:translateY(-10px);
+
   box-shadow:
     0 15px 30px rgba(0,0,0,.4),
-    0 0 25px rgba(250,204,21,.3);
+    0 0 20px rgba(250,204,21,.4),
+    0 0 40px rgba(250,204,21,.2);
 }
 
-/* CONTENEDOR IMAGEN */
-
+/* =========================
+   IMAGEN
+========================= */
 .card-img{
   width:100%;
   height:320px;
+
   object-fit:contain;
 
-  /* EFECTO PEQUEÑO */
+  padding:15px;
+
   transform:scale(.75);
 
   transition:
     transform .7s ease,
     filter .7s ease;
-
-  padding:15px;
 }
-
-/* EFECTO GRANDE */
 
 .card:hover .card-img{
   transform:scale(1.15);
-  filter:drop-shadow(0 0 15px #facc15);
+
+  filter:
+    drop-shadow(0 0 10px #facc15)
+    drop-shadow(0 0 20px #facc15);
 }
 
-/* BODY */
-
+/* =========================
+   CONTENIDO CARD
+========================= */
 .card-body{
   padding:20px;
 }
 
 .card-id{
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+
   background:#facc15;
   color:#000;
+
   padding:5px 10px;
   border-radius:20px;
+
   font-weight:bold;
   margin-bottom:10px;
 }
@@ -129,11 +250,17 @@ body{
   font-size:1.4rem;
 }
 
+/* =========================
+   ESTADÍSTICAS
+========================= */
 .card-stat{
   display:flex;
   justify-content:space-between;
+  align-items:center;
+
   margin:10px 0;
   padding:10px 0;
+
   border-bottom:1px solid rgba(255,255,255,.1);
 }
 
@@ -143,6 +270,10 @@ body{
 
 .card-stat span:first-child{
   color:#94a3b8;
+
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 
 .card-stat span:last-child{
@@ -150,8 +281,20 @@ body{
   font-weight:600;
 }
 
-/* RESPONSIVE EXTRA */
+/* =========================
+   ICONOS DE STATS
+========================= */
+.stat-icon{
+  color:#facc15;
+  font-size:1rem;
 
+  filter:
+    drop-shadow(0 0 5px #facc15);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 @media(max-width:768px){
 
   .card-img{
@@ -162,6 +305,10 @@ body{
     transform:scale(1.05);
   }
 
+  .header h1{
+    flex-direction:column;
+    gap:8px;
+  }
 }
 
 @media(max-width:480px){
@@ -169,5 +316,43 @@ body{
   .grid-container{
     grid-template-columns:1fr;
   }
+}
 
+/* =========================
+   ANIMACIÓN UNIVERSO
+========================= */
+@keyframes dragonUniverse{
+
+  0%{
+    background-position:
+      0 0,0 0,0 0,0 0,0 0,0 0,
+      0 0,0 0,0 0,0 0,0 0,
+      0% 50%;
+  }
+
+  50%{
+    background-position:
+      50px 20px,
+      -30px 50px,
+      40px -20px,
+      -20px 30px,
+      30px -15px,
+      -25px 20px,
+
+      20px 10px,
+      -20px -10px,
+
+      15px 10px,
+      -15px 15px,
+      10px -10px,
+
+      100% 50%;
+  }
+
+  100%{
+    background-position:
+      0 0,0 0,0 0,0 0,0 0,0 0,
+      0 0,0 0,0 0,0 0,0 0,
+      0% 50%;
+  }
 }
