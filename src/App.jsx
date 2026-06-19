@@ -9,7 +9,7 @@ function App() {
 
   useEffect(() => {
     const obtenerPersonajes = async () => {
-      const response = await fetch("https://dragonball-api.com/api/characters?limit=30");
+      const response = await fetch("https://dragonball-api.com/api/characters?limit=58");
       const datos = await response.json();
       setPersonajes(datos.items)
     }
